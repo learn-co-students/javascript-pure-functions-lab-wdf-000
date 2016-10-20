@@ -26,11 +26,9 @@ function removeFromPlaylist(playlist, episode) {
 }
 
 function bingeWatch(playlist) {
-  // var result;
   var episode = playlist[0]
   if (episode) {
     var playlist = removeFromPlaylist(playlist, episode)
-    // console.log(playlist)
     return bingeWatch(playlist)
   }
   else {

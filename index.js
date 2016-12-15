@@ -22,17 +22,15 @@ function getNextEpisodeInPlaylist(playlist) {
 }
 
 function removeFromPlaylist(playlist, episode) {
-  return playlist.filter(function(e){
-    if (JSON.stringify(e) != JSON.stringify(episode)) {
-      return e;
-    }
-  })
+  return playlist.filter(function(e){ return e != episode })
 }
 
+//* Ask Alex about this
 function bingeWatch(playlist){
-  if (removeFromPlaylist(playlist, playlist[0]).length > 0) {
-    bingeWatch(removeFromPlaylist(removeFromPlaylist(playlist, playlist[0]),removeFromPlaylist(playlist, playlist[0])[0] ))
+  console.log(playlist)
+  if (playlist.length == 0) {
+    return 'Please let there be more!'
   } else {
-      return 'Please let there be more!'
+    return bingeWatch(playlist.slice(1))
   }
 }

@@ -24,38 +24,13 @@ function getNextEpisodeInPlaylist(playList,episode){
 
 
 function removeFromPlaylist(playList,episode){
-  return playList.filter((e)=> {
-  	if(JSON.stringify(e) != JSON.stringify(episode)){
-       return e;
-    }
-});
+    return playList.filter(function(e){return e !=episode})
 }
 
 function bingeWatch(playList){
-  // playList.concat(finaleEpisode,"Please let there be more!").map(function(episode){
-  //   console.log(episode)
-  // })
-    // if(playList.length > 0){
-    //   console.log(playList)
-    //   return bingeWatch(playList[playList.length]-1);
-    // }else{
-    //   return "no";
-    // }
-    playList.map((value,index)=> {
-      if(index <= playList.length){
-        debugger;
-        removeFromPlaylist(playList,value);
-        console.log(bingeWatch(playList));
-      }else{
-        console.log("Please let there be more!");
-      }
-    })
-}
-
-var countdown = function(value) {
-    if (value > 0) {
-        return countdown(value - 1);
-    } else {
-        return value;
-    }
+  if (playList.length == 0){
+    return 'Please let there be more!'
+  }else {
+    return bingeWatch(playList.slice(1))
+  }
 }

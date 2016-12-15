@@ -36,6 +36,7 @@ describe('Pure functions', function() {
       const spy = sinon.spy(window, 'bingeWatch')
       const result = window.bingeWatch(updatedPlaylist);
       expect(spy.callCount).toEqual(11);
+      debugger;
       expect(result).toEqual('Please let there be more!');
     });
   });

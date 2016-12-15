@@ -11,3 +11,32 @@ const episodes = [
 ];
 
 const finaleEpisode = { id: 's06e10', title: 'The Winds of Winter' };
+
+function addToPlaylist(playlist, episode) {
+  return [...playlist, episode];
+}
+
+function removeFromPlaylist(playlist, episode) {
+  let newPlaylist = [];
+  newPlaylist = playlist.filter(function (ep){
+    if (ep !== episode){
+      return Object.assign({}, playlist, ep);
+    }
+  });
+  /// This works in browser & console because of underscore library load in index.html, however, does not work for terminal tests
+  /// Changed .map to .filter => problem solved!
+  // return _.compact(newPlaylist);
+  return newPlaylist;
+}
+
+function getNextEpisodeInPlaylist(playlist) {
+  return playlist[0];
+}
+
+function bingeWatch(playlist) {
+  while (playlist.length > 0){
+    playlist.shift();
+    bingeWatch(playlist);
+  }
+  return "Please let there be more!";
+}

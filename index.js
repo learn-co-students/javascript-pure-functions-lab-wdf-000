@@ -30,6 +30,11 @@ function bingeWatch(playlist) {
     return 'Please let there be more!';
   }
 
-  playlist.shift(); // remove first episode (altering the playlist)
-  return bingeWatch(playlist); // continue calling bingeWatch() on the shortened playlist
+  let episode = getNextEpisodeInPlaylist(playlist);
+  let updatedPlaylist = removeFromPlaylist(playlist, episode);
+  return bingeWatch(updatedPlaylist);
+
+  // not making use of pure functions
+  // playlist.shift(); // remove first episode (altering the playlist)
+  // return bingeWatch(playlist); // continue calling bingeWatch() on the shortened playlist
 }
